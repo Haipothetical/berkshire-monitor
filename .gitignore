@@ -1,0 +1,42 @@
+# Python virtual environment
+venv/
+env/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Personal configuration (contains your email/credentials)
+config.py
+
+# Data files (your personal holdings data)
+*.csv
+data/
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Email credentials and sensitive info
+.env
+secrets.txt
+
+# Scheduler and logs
+*.plist
+*.log
+
+# Test files
+test_email.py
+debug_*.py
+
+# Backup files
+*.bak
