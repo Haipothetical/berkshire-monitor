@@ -41,3 +41,4 @@ debug_*.py
 # Backup files
 *.bak
 *.bak.*
+*.bak.*
