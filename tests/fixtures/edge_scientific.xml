@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Report to the nearest dollar -->
+<informationTable>
+  <infoTable>
+    <nameOfIssuer>Scientific Co</nameOfIssuer>
+    <titleOfClass>COM</titleOfClass>
+    <cusip>999888777</cusip>
+    <sshPrnamt>1.0E2</sshPrnamt>
+    <value>1.23E3</value>
+  </infoTable>
+</informationTable>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+  <head><title>Sample 13F HTML</title></head>
+  <body>
+    <table>
+      <tr><th>Header1</th></tr>
+    </table>
+
+    <!-- filler tables -->
+    <table>
+      <tr><td>filler</td></tr>
+    </table>
+
+    <!-- main table with many rows (>=11) so parser will pick it -->
+    <table>
+      <tr><td>H0</td><td>H1</td><td>H2</td><td>H3</td><td>H4</td><td>H5</td></tr>
+      <tr><td>H0</td><td>H1</td><td>H2</td><td>H3</td><td>H4</td><td>H5</td></tr>
+      <tr><td>H0</td><td>H1</td><td>H2</td><td>H3</td><td>H4</td><td>H5</td></tr>
+      <!-- data rows start at index 3 in parser -->
+      <tr><td>Alpha Inc</td><td>ALPH</td><td>AAA111</td><td>FIGI</td><td>1</td><td>100</td></tr>
+      <tr><td>Beta LLC</td><td>BETA</td><td>BBB222</td><td>FIGI</td><td>5</td><td>50</td></tr>
+      <tr><td>Gamma Co</td><td>GAM</td><td>GGG333</td><td>FIGI</td><td>2</td><td>10</td></tr>
+      <!-- add filler rows to exceed 10 rows total for this table -->
+      <tr><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td></tr>
+      <tr><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td></tr>
+      <tr><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td></tr>
+      <tr><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td></tr>
+      <tr><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td><td>R</td></tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Report (in thousands) -->
+<informationTable>
+  <infoTable>
+    <nameOfIssuer>Test Corp A</nameOfIssuer>
+    <titleOfClass>COM</titleOfClass>
+    <cusip>000111222</cusip>
+    <sshPrnamt>10</sshPrnamt>
+    <value>250</value>
+  </infoTable>
+</informationTable>

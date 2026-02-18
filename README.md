@@ -78,6 +78,19 @@ Add this line to run daily at 9 AM:
 3. **Detects Changes**: Compares current holdings with the last saved version
 4. **Alerts**: Notifies you of any new positions via email or text
 
+
+## Migration note — CSV format change
+
+The monitor now consolidates and compares holdings primarily by CUSIP (a more stable identifier) and will save a normalized `cusip` column in `berkshire_holdings.csv` when available. This change is backwards compatible:
+
+- If your existing `berkshire_holdings.csv` lacks a `cusip` column, the script will fall back to matching by a normalized company name for the first few runs.
+- On the first successful run after updating, the script will rewrite `berkshire_holdings.csv` using the new consolidation rules (CUSIP preferred, name fallback). Consider making a quick backup of your existing CSV if you want to preserve it:
+
+```bash
+cp berks hire_holdings.csv berks hire_holdings.csv.bak  # optional backup
+```
+
+No action is required otherwise — the new behavior reduces false positives when company names change but the CUSIP remains the same.
 ## Project Structure
 ```
 berkshire-monitor/

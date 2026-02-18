@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <infoTable>
+    <nameOfIssuer>Alpha Inc</nameOfIssuer>
+    <titleOfClass>ALPH</titleOfClass>
+    <cusip>AAA111</cusip>
+    <sshPrnamt>100</sshPrnamt>
+    <value>1</value>
+  </infoTable>
+  <infoTable>
+    <nameOfIssuer>Beta LLC</nameOfIssuer>
+    <titleOfClass>BETA</titleOfClass>
+    <cusip>BBB222</cusip>
+    <sshPrnamt>50</sshPrnamt>
+    <value>5</value>
+  </infoTable>
+  <infoTable>
+    <nameOfIssuer>Gamma Co</nameOfIssuer>
+    <titleOfClass>GAM</titleOfClass>
+    <cusip>GGG333</cusip>
+    <sshPrnamt>10</sshPrnamt>
+    <value>2</value>
+  </infoTable>
+</root>

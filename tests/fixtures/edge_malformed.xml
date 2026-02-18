@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Malformed but salvageable -->
+<informationTable>
+  <infoTable>
+    <nameOfIssuer>Broken Inc</nameOfIssuer>
+    <titleOfClass>COM</titleOfClass>
+    <cusip>444333222</cusip>
+    <sshPrnamt>50
+    <value>500</value>
+  </infoTable>
+</informationTable>
