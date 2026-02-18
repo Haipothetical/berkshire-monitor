@@ -91,6 +91,31 @@ cp berks hire_holdings.csv berks hire_holdings.csv.bak  # optional backup
 ```
 
 No action is required otherwise — the new behavior reduces false positives when company names change but the CUSIP remains the same.
+ 
+## Development & testing
+
+If you're working on the project or running tests locally, here are a few handy commands and environment variables:
+
+- Install dependencies and run tests:
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python -m unittest discover tests
+```
+
+- Run the monitor script in dry-run mode (prevents real email sends):
+```bash
+export DRY_RUN=1        # set to 1 or true to suppress SMTP sends
+export LOG_LEVEL=DEBUG  # DEBUG/INFO to increase verbosity
+python monitor_holdings.py
+```
+
+- Notes:
+   - The tests include fixtures that simulate both XML and HTML SEC holdings formats.
+   - `DRY_RUN=1` is strongly recommended when running locally or in CI to avoid accidental alerts.
+   - `LOG_LEVEL` controls logging verbosity; by default it is `INFO`.
+
 ## Project Structure
 ```
 berkshire-monitor/
