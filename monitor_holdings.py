@@ -12,7 +12,10 @@ import pandas as pd
 import time
 import os
 from datetime import datetime
-import config
+try:
+    import config as _config
+except ImportError:
+    _config = None
 import re
 import shutil
 import json
@@ -29,9 +32,24 @@ logging.basicConfig(
     ]
 )
 
+def _get_config(attr, env_var=None, default=None):
+    """Get config value: env var first, then config.py, then default (or raise if required)."""
+    if env_var:
+        val = os.getenv(env_var)
+        if val is not None:
+            return val
+    if _config is not None:
+        val = getattr(_config, attr, None)
+        if val is not None:
+            return val
+    if default is None:
+        raise RuntimeError(f"Missing required config: set {env_var} env var or {attr} in config.py")
+    return default
+
+
 # Constants
 BERKSHIRE_CIK = '0001067983'
-HEADERS = {'User-Agent': config.SEC_USER_AGENT}
+HEADERS = {'User-Agent': _get_config('SEC_USER_AGENT', env_var='SEC_USER_AGENT')}
 
 
 def _create_session(retries=3, backoff_factor=1, status_forcelist=(429, 500, 502, 503, 504)):
@@ -555,15 +573,16 @@ def send_alert(new_holdings):
 
     logger.info("Finished alert message output")
     
-    # Determine email settings (env vars override config)
-    email_enabled = config.EMAIL_ENABLED
-    email_enabled_env = os.getenv('EMAIL_ENABLED')
-    if email_enabled_env is not None:
-        email_enabled = email_enabled_env.lower() in ('1', 'true', 'yes')
+    # Determine email settings (env vars override config.py)
+    email_enabled_raw = _get_config('EMAIL_ENABLED', env_var='EMAIL_ENABLED', default='false')
+    if isinstance(email_enabled_raw, bool):
+        email_enabled = email_enabled_raw
+    else:
+        email_enabled = str(email_enabled_raw).lower() in ('1', 'true', 'yes')
 
-    sender_email = os.getenv('SENDER_EMAIL', config.SENDER_EMAIL)
-    sender_password = os.getenv('SENDER_PASSWORD', config.SENDER_PASSWORD)
-    recipient_email = os.getenv('RECIPIENT_EMAIL', config.RECIPIENT_EMAIL)
+    sender_email = _get_config('SENDER_EMAIL', env_var='SENDER_EMAIL', default='')
+    sender_password = _get_config('SENDER_PASSWORD', env_var='SENDER_PASSWORD', default='')
+    recipient_email = _get_config('RECIPIENT_EMAIL', env_var='RECIPIENT_EMAIL', default='')
 
     # Dry-run (prevent real emails), controlled by env var DRY_RUN
     dry_run_env = os.getenv('DRY_RUN')
