@@ -13,6 +13,7 @@ config.py
 
 # Data files (your personal holdings data)
 *.csv
+!berkshire_holdings.csv
 data/
 
 # IDE/Editor files
